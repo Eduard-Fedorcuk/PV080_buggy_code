@@ -2,7 +2,6 @@ import sys
 import os
 import yaml
 import flask
-import urllib
 
 app = flask.Flask(__name__)
 
@@ -28,6 +27,8 @@ def fetch_website(urllib_version, url):
     # Import the requested version (2 or 3) of urllib
     if urlib_version in [2,3,"2","3"]:
         exec(f"import urllib{urllib_version} as urllib", globals())
+    else:
+        raise Exception
     # Fetch and print the requested URL
  
     try: 
